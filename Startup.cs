@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Twitter.Libs.Services;
 
 namespace TwitterShowcase
 {
@@ -17,20 +18,21 @@ namespace TwitterShowcase
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddSingleton<ITwitterApiService, Twitter.Libs.Services.TwitterApiService>();
             services.AddControllersWithViews();
 
-            // In production, the React files will be served from this directory
+
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -44,9 +46,11 @@ namespace TwitterShowcase
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseMvc();
 
             app.UseRouting();
 
