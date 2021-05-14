@@ -11,7 +11,7 @@ const Search = () => {
 
   const getUserTweets = async (searchQuery, searchType) => {
     const response = await axios
-      .get("https://localhost:5001/tweet/" + searchType + "/" + searchQuery)
+      .get("/tweet/" + searchType + "/" + searchQuery)
       .then((response) => {
         searchType === "user"
           ? setTweets(response.data)

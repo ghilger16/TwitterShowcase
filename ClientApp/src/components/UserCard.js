@@ -12,7 +12,7 @@ const UserCard = ({ twitterUser, setRandomTweet }) => {
 
   const getUserCardData = async (searchQuery) => {
     const response = await axios
-      .get("https://localhost:5001/tweet/randomUser/" + searchQuery)
+      .get("/tweet/randomUser/" + searchQuery)
       .then((response) => {
         setRandomUserCardData(response.data[0].user);
         setUnblurredImgUrl(
@@ -26,7 +26,7 @@ const UserCard = ({ twitterUser, setRandomTweet }) => {
 
   const getRandomTweet = async (searchQuery) => {
     const response = await axios
-      .get("https://localhost:5001/tweet/randomTweet/" + searchQuery)
+      .get("/tweet/randomTweet/" + searchQuery)
       .then((response) => {
         setRandomTweet(response.data);
       })

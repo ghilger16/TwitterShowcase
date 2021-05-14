@@ -17,7 +17,6 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
-    <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -27,6 +26,26 @@
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ClientApp\build\favicon.ico" />
+    <None Remove="ClientApp\build\precache-manifest.63234389f3f01e446a0dc8ad93c33292.js" />
+    <None Remove="ClientApp\build\favicon.ico" />
+    <None Remove="ClientApp\build\index.html" />
+    <None Remove="ClientApp\build\service-worker.js" />
+    <None Remove="ClientApp\build\static\css\2.5b44f0a0.chunk.css" />
+    <None Remove="ClientApp\build\static\css\main.dccad8ab.chunk.css.map" />
+    <None Remove="ClientApp\build\static\css\2.5b44f0a0.chunk.css.map" />
+    <None Remove="ClientApp\build\static\css\main.dccad8ab.chunk.css" />
+    <None Remove="ClientApp\build\static\js\runtime-main.bbbca04b.js.map" />
+    <None Remove="ClientApp\build\static\js\main.58646e97.chunk.js.map" />
+    <None Remove="ClientApp\build\static\js\main.58646e97.chunk.js" />
+    <None Remove="ClientApp\build\static\js\2.8e406324.chunk.js.LICENSE.txt" />
+    <None Remove="ClientApp\build\static\js\2.8e406324.chunk.js.map" />
+    <None Remove="ClientApp\build\static\js\runtime-main.bbbca04b.js" />
+    <None Remove="ClientApp\build\static\js\2.8e406324.chunk.js" />
+    <None Remove="ClientApp\build\static\media\home.38f572fd.jpg" />
+    <None Remove="ClientApp\build\static\media\homeicon.4ece21c6.svg" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

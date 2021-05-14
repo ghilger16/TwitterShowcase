@@ -1,12 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Twitter.Libs.Services;
 
 namespace TwitterServer1.Controllers
 {
-    
+
     [Route("[controller]")]
     [ApiController]
 
