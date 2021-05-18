@@ -47,7 +47,7 @@ namespace TwitterShowcase
             }
 
 
-            
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseMvc();

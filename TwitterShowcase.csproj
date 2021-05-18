@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.14" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.1.0" />
+    <PackageReference Include="Azure.Identity" Version="1.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.1.15" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +49,10 @@
     <None Remove="ClientApp\build\static\js\2.8e406324.chunk.js" />
     <None Remove="ClientApp\build\static\media\home.38f572fd.jpg" />
     <None Remove="ClientApp\build\static\media\homeicon.4ece21c6.svg" />
+    <None Remove="ClientApp\build\precache-manifest.8157148daa92f9a3d239bc7b02e3dc47.js" />
+    <None Remove="ClientApp\build\static\js\2.e5acbb96.chunk.js" />
+    <None Remove="ClientApp\build\static\js\2.e5acbb96.chunk.js.LICENSE.txt" />
+    <None Remove="ClientApp\build\static\js\2.e5acbb96.chunk.js.map" />
   </ItemGroup>
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
