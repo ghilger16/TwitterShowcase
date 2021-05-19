@@ -2,6 +2,7 @@ body {
     font-family: "Helvetica Neue";
     background-color: #001e36;
     box-sizing: border-box;
+    overflow:auto;
 }
 
 .intro {
@@ -9,6 +10,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
+    overflow:hidden;
 }
 
 @media (min-width: 650px) {
