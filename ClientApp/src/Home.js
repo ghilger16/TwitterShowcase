@@ -5,7 +5,7 @@ import badge from "./Images/verified.png";
 
 const Home = () => {
     return (
-        <body style={{ overflow: "hidden" }}>
+        
             <div
                 className="intro d-flex"
                 style={{ backgroundImage: `url(${background})` }}
@@ -36,7 +36,7 @@ const Home = () => {
                     </h3>
                 </div>
             </div>
-        </body>
+       
     );
 };
 
