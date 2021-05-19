@@ -4,7 +4,7 @@ A fun site to showcase tweets using JavaScript, React, .Net and Bootstrap.
 
 Try it [here](https://twittershowcaseapp.azurewebsites.net)
 
-![](Images/preview.png)
+![](ClientApp/src/Images/preview.png)
 
 #### Summary
 
