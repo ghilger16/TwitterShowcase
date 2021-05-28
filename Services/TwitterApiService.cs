@@ -10,6 +10,20 @@ using Twitter.Libs.Models;
 
 namespace Twitter.Libs.Services
 {
+
+    public interface ITwitterApiService
+    {
+        Task<List<TweetModel>> GetUserTweets(string searchQuery);
+
+        Task<KeywordModel> GetKeywordTweets(string searchQuery);
+
+        Task<List<RandomUserModel>> GetRandomUserData(string searchQuery);
+
+        Task<TweetModel> GetRandomTweets(string searchQuery);
+
+    }
+
+
     public class TwitterApiService : ITwitterApiService
     {
         private readonly IConfiguration _config;
@@ -19,91 +33,46 @@ namespace Twitter.Libs.Services
             _config = config;
         }
 
+
         public async Task<List<TweetModel>> GetUserTweets(string searchQuery)
         {
-            var accessToken = _config["AccessToken"];
+            var url = $"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={searchQuery}&count=50&tweet_mode=extended&exclude_replies=true";
+            string json;
+            json = await GetTweetsAsync(url);           
 
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Authorization
-                         = new AuthenticationHeaderValue("bearer", accessToken);
+            return JsonConvert.DeserializeObject<List<TweetModel>>(json);
 
-                var url = new Uri($"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={searchQuery}&count=50&tweet_mode=extended&exclude_replies=true");
-                var response = await client.GetAsync(url);
-
-                string json;
-                using (var content = response.Content)
-                {
-                    json = await content.ReadAsStringAsync();
-                }
-
-                return JsonConvert.DeserializeObject<List<TweetModel>>(json);
-
-
-            }
         }
 
 
         public async Task<KeywordModel> GetKeywordTweets(string searchQuery)
         {
-            var accessToken = _config["AccessToken"];
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Authorization
-                         = new AuthenticationHeaderValue("Bearer", accessToken);
+            var url = $"https://api.twitter.com/1.1/search/tweets.json?q={searchQuery}&lang=en&tweet_mode=extended&result_type=popular&count=50";
+            string json;
+            json = await GetTweetsAsync(url);
 
-                var url = new Uri($"https://api.twitter.com/1.1/search/tweets.json?q={searchQuery}&lang=en&tweet_mode=extended&result_type=popular&count=50");
-                var response = await client.GetAsync(url);
-
-                string json;
-                using (var content = response.Content)
-                {
-                    json = await content.ReadAsStringAsync();
-                }
-
-                return JsonConvert.DeserializeObject<KeywordModel>(json);
-            }
+            return JsonConvert.DeserializeObject<KeywordModel>(json);
+            
         }
+
 
         public async Task<List<RandomUserModel>> GetRandomUserData(string searchQuery)
         {
-            var accessToken = _config["AccessToken"];
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Authorization
-                         = new AuthenticationHeaderValue("Bearer", accessToken);
+            var url = $"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={searchQuery}&count=1";
+            string json;
+            json = await GetTweetsAsync(url);
 
-                var url = new Uri($"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={searchQuery}&count=1");
-                var response = await client.GetAsync(url);
-
-                string json;
-                using (var content = response.Content)
-                {
-                    json = await content.ReadAsStringAsync();
-                }
-
-                return JsonConvert.DeserializeObject<List<RandomUserModel>>(json);
-            }
+            return JsonConvert.DeserializeObject<List<RandomUserModel>>(json);
+            
         }
 
         public async Task<TweetModel> GetRandomTweets(string searchQuery)
         {
-            var accessToken = _config["AccessToken"];
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Authorization
-                         = new AuthenticationHeaderValue("Bearer", accessToken);
+            var url = $"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={searchQuery}&count=50&tweet_mode=extended&exclude_replies=true";
+            string json;
+            json = await GetTweetsAsync(url);
 
-                var url = new Uri($"https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name={searchQuery}&count=50&tweet_mode=extended&exclude_replies=true");
-                var response = await client.GetAsync(url);
-
-                string json;
-                using (var content = response.Content)
-                {
-                    json = await content.ReadAsStringAsync();
-                }
-
-                var tweets = JsonConvert.DeserializeObject<List<TweetModel>>(json);
+            var tweets = JsonConvert.DeserializeObject<List<TweetModel>>(json);
 
                 var random = new Random();
                 var randomNum = random.Next(0, 50);
@@ -114,10 +83,28 @@ namespace Twitter.Libs.Services
             }
 
 
+            private async Task<string> GetTweetsAsync(string url)
+            {
+                var accessToken = _config["AccessToken"];
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization
+                        = new AuthenticationHeaderValue("Bearer", accessToken);
+
+                    var completedUrl = new Uri(url);
+                    var response = await client.GetAsync(completedUrl);
+
+                    string json;
+                    using (var content = response.Content)
+                    {
+                        json = await content.ReadAsStringAsync();
+                    }
+
+                    return json;
+                }
+            }
 
         }
-
     }
 
-}
 
