@@ -16,4 +16,4 @@ my own mock data was a proud and joyfull moment for me in my programming journey
 
 #### Author
 
-Greg Hilger - Full-Stack Software Developer 
+Greg Hilger - Full Stack Software Developer  [Website](gregoryhilger.com) | [LinkedIn](https://www.linkedin.com/in/gregoryhilger/)
