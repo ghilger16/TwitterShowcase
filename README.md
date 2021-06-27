@@ -1,6 +1,6 @@
 ## Twitter Showcase App
 
-A fun site to showcase tweets using JavaScript, React, .Net and Bootstrap.
+A fun site to showcase tweets using JavaScript, React, .Net and C#.
 
 Try it [here](https://twittershowcaseapp.azurewebsites.net)
 
