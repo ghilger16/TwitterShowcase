@@ -18,7 +18,7 @@ const Random = () => {
 
     useEffect(() => {
         getUserCards();
-    }, []);
+    });
 
     const getUserCards = async () => {
         const result = Promise.all(
