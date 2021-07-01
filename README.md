@@ -1,6 +1,6 @@
 ## Twitter Showcase App
 
-A fun site to showcase tweets using JavaScript, React, .Net and Bootstrap.
+A fun site to showcase tweets using JavaScript, React, .Net and C#.
 
 Try it [here](https://twittershowcaseapp.azurewebsites.net)
 
@@ -16,4 +16,4 @@ my own mock data was a proud and joyfull moment for me in my programming journey
 
 #### Author
 
-Greg Hilger - Full-Stack Software Developer 
+Greg Hilger - Full Stack Software Developer  [Website](https://www.gregoryhilger.com) | [LinkedIn](https://www.linkedin.com/in/gregoryhilger/)
