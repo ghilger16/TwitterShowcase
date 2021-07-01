@@ -10,10 +10,10 @@ const Random = () => {
 
     const twitterUserIcons = [
         "simpsonsqotd",
-        "satisfyingdaily",
-        "mental_floss",
-        "merriamwebster",
-        "goodquoteco",
+        "officeqs",
+        "snl_polls",
+        "all_seinfeld",
+        "bluthquotes",
     ];
 
     useEffect(() => {
