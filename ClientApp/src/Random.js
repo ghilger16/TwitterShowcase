@@ -11,9 +11,9 @@ const Random = () => {
     const twitterUserIcons = [
         "simpsonsqotd",
         "officeqs",
-        "snl_polls",
+        "hookedonfriends",
         "all_seinfeld",
-        "bluthquotes",
+        "bobsburgersqt"
     ];
 
     useEffect(() => {
